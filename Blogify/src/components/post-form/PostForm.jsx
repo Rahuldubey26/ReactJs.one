@@ -4,6 +4,7 @@ import { Button, Input, Select, RTE } from "../index"
 import appwriteService from "../../appwrite/config"
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+
 function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
@@ -36,7 +37,7 @@ function PostForm({ post }) {
             const file = await appwriteService.updateFile(data.image[0]);
 
             if (file) {
-                const fileId = file.$id
+                const fileId = file.$id;
                 data.featuredImage = fileId;
                 const dbPost = await appwriteService.createPost({
                     ...data,
@@ -74,6 +75,7 @@ function PostForm({ post }) {
                 subscription.unsubscribe();
             }
     },[watch,slugTransform,setValue])
+    
     return (
         <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
         <div className="w-2/3 px-2">
