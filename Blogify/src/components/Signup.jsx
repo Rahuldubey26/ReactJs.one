@@ -6,7 +6,7 @@ import { Button, Input, Logo } from "../components/index"
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import authService from '../appwrite/auth';
-import { Account } from 'appwrite';
+
 
 
 function Signup() {

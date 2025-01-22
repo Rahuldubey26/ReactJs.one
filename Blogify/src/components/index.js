@@ -8,16 +8,24 @@ import Signup from './Signup';
 import Login from './Login';
 import PostCard from './PostCard';
 import PostForm from './post-form/PostForm';
+import Button from './Button';
+import Input from './Input';
+import AuthLagout from './AuthLagout';
+import  Select  from '../components/Select';
 
 export {
-    Footer,
-    Logo,
-    Container,
     Header,
+    Footer,
+    Container,
+    Logo,
     LogoutBtn,
     RTE,
     Signup,
     Login,
-    PostCard,
+    Button,
     PostForm,
+    PostCard,
+    AuthLagout, 
+    Input,
+    Select,
 }
