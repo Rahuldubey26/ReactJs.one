@@ -5,7 +5,7 @@ import App from './App.jsx'
 import { Provider } from 'react-redux'
 import store from "./store/store.js"
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import AuthLagout from './components/AuthLagout';
+import { AuthLayout } from './components/index.js'
 import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
 import AllPosts from './pages/AllPosts';
@@ -13,75 +13,72 @@ import AddPost from './pages/AddPost';
 import EditPost from './pages/EditPost';
 import Post from './pages/Post';
 import Home from "./pages/Home.jsx"
-const router = createBrowserRouter ([
+
+const router = createBrowserRouter([
   {
-    path:'/',
-    element:<App/>,
-    children:[
+    path: "/",
+    element: <App />,
+    children: [
       {
-        path:"/",
-        element:<Home/>
+        path: "/",
+        element: <Home />,
       },
       {
-        path:"/login",
-        element:(
-          <AuthLagout authentication={false}>
-            <Login/>
-          </AuthLagout>
-        )
+        path: "/login",
+        element: (
+          <AuthLayout authentication={false}>
+            <Login />
+          </AuthLayout>
+        ),
       },
       {
-        path:"/signup",
-        element:(
-          <AuthLagout authentication={false}>
-            <Signup/>
-          </AuthLagout>
-        )
+        path: "/signup",
+        element: (
+          <AuthLayout authentication={false}>
+            <Signup />
+          </AuthLayout>
+        ),
       },
       {
-        path:"/all-posts",
-        element:(
-          <AuthLagout authentication={" "}>
-            <AllPosts/>
-          </AuthLagout>
-        )
-      },
-
-      {
-        path:"/add-post",
-        element:(
-          <AuthLagout authentication={" "}>
-            <AddPost/>
-          </AuthLagout>
-        )
-      },
-
-      {
-        path:"/edit-post/:slug",
-        element:(
-          <AuthLagout authentication={" "}>
-            <EditPost/>
-          </AuthLagout>
-        )
+        path: "/all-posts",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <AllPosts />
+          </AuthLayout>
+        ),
       },
       {
-        path:"/post/:slug",
-        element:(
-          <AuthLagout authentication={" "}>
-            <Post/>
-          </AuthLagout>
-        )
+        path: "/add-post",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <AddPost />
+          </AuthLayout>
+        ),
       },
-    ]
-
-  }
+      {
+        path: "/edit-post/:slug",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <EditPost />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/post/:slug",
+        element: <Post />,
+      },
+    ],
+  },
 ])
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-    <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </Provider>
   </StrictMode>,
 )
